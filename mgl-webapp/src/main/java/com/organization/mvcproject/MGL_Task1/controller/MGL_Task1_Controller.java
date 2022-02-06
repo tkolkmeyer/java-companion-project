@@ -38,7 +38,7 @@ public class MGL_Task1_Controller {
 	 * update games.jsp as well. 
 	 * SEE:  https://www.baeldung.com/spring-circular-view-path-error
 	 */
-		return new ModelAndView("review", "command", new Review());
+		return new ModelAndView("reviewCreatePage", "command", new Review());
 	}
 
 	@RequestMapping(value = "/addReview", method = RequestMethod.POST)
@@ -50,7 +50,7 @@ public class MGL_Task1_Controller {
 	 * TODO 1.0 Rename the jsp view, to "reviewDetailPage" because what is the view the "result" of?
 	 * update games.jsp as well. 
 	 */
-		return new ModelAndView("result", "submittedReview", review);
+		return new ModelAndView("reviewDetailPage", "submittedReview", review);
 	}
 
 	
@@ -61,7 +61,7 @@ public class MGL_Task1_Controller {
 		 * update games.jsp as well. 
 		 * SEE:  https://www.baeldung.com/spring-circular-view-path-error
 		 */
-		return new ModelAndView("games", "command", new Game());
+		return new ModelAndView("gamesPage", "command", new Game());
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class MGL_Task1_Controller {
 	}
 
 	//TODO 1.0 RequestMapping URL should follow RESTful convention
-	@RequestMapping(value = "/createGame", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/game", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> createGame(@RequestBody Game game) {
 		javaGameService.saveGame(game);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
